@@ -49,14 +49,11 @@ public class MsgTest {
 
 		System.out.println(json.toString());
 
-
-
 	}
 
-	
-	//使用 Jackson 完成 json 和 Java Object 互相轉換	
-	//https://kucw.github.io/blog/2020/6/java-jackson/	
-	
+	// 使用 Jackson 完成 json 和 Java Object 互相轉換
+	// https://kucw.github.io/blog/2020/6/java-jackson/
+
 	@Test
 	public void jackSON() {
 
@@ -66,27 +63,27 @@ public class MsgTest {
 		ObjectMapper om = new ObjectMapper();
 
 		try {
-			
+
 			// List<> 轉 json
 			String mlistjson = om.writeValueAsString(mlist);
 			System.out.println(mlistjson);
 
 			System.out.println("------------");
-			
-			// json 轉  Object 
+
+			// json 轉 Object
 			/*
-			json轉換異常 , 返回的是Array[{ }]。在將json轉換成物件時，
-			使用Object[].class替換Object.class，
-			即把json段轉換成這個物件的陣列，而不僅僅是一個物件。
-			*/
-			//https://www.itread01.com/content/1546892822.html
-			
-			//Msg msg = om.readValue(mlistjson, Msg.class);
-			
-			List<Msg> msgList = om.readValue(mlistjson, new TypeReference<List<Msg>>() {});
-			
-			Iterator<Msg> imsgList=msgList.iterator();
-			while(imsgList.hasNext()) {
+			 * json轉換異常 , 返回的是Array[{ }]。在將json轉換成物件時， 使用Object[].class替換Object.class，
+			 * 即把json段轉換成這個物件的陣列，而不僅僅是一個物件。
+			 */
+			// https://www.itread01.com/content/1546892822.html
+
+			// Msg msg = om.readValue(mlistjson, Msg.class);
+
+			List<Msg> msgList = om.readValue(mlistjson, new TypeReference<List<Msg>>() {
+			});
+
+			Iterator<Msg> imsgList = msgList.iterator();
+			while (imsgList.hasNext()) {
 				System.out.println(imsgList.next());
 			}
 
@@ -107,13 +104,19 @@ public class MsgTest {
 
 		System.out.println("------fromJson------");
 
-		List<Msg> msgList = gson.fromJson(mlistgson, new TypeToken<List<Msg>>() {}.getType());
-		
-		Iterator<Msg> imsgList=msgList.iterator();
-		
-		while(imsgList.hasNext()) {
+		List<Msg> msgList = gson.fromJson(mlistgson, new TypeToken<List<Msg>>() {
+		}.getType());
+
+		Iterator<Msg> imsgList = msgList.iterator();
+
+		while (imsgList.hasNext()) {
 			System.out.println(imsgList.next());
 		}
+
+		// 單一筆 一個物件
+//		Msg pperson = gson.fromJson(mlistgson, Msg.class);
+//
+//		System.out.println(pperson);
 
 	}
 
