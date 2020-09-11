@@ -74,10 +74,11 @@ public class MsgTest {
 			System.out.println("------------");
 			
 			// json 轉  Object 
-			
-			//json轉換異常 , 返回的是Array[{ }]。在將json轉換成物件時，
-			//使用Object[].class替換Object.class，
-			//即把json段轉換成這個物件的陣列，而不僅僅是一個物件。
+			/*
+			json轉換異常 , 返回的是Array[{ }]。在將json轉換成物件時，
+			使用Object[].class替換Object.class，
+			即把json段轉換成這個物件的陣列，而不僅僅是一個物件。
+			*/
 			//https://www.itread01.com/content/1546892822.html
 			
 			//Msg msg = om.readValue(mlistjson, Msg.class);
