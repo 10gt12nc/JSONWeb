@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.json.JSONObject;
 import tw.lin.bean.Msg;
 import tw.lin.dao.MsgDao;
 import tw.lin.utils.DBConnectionUtils;
@@ -61,5 +62,6 @@ public class MsgDaoImpl implements MsgDao {
 		}
 		return mlist;
 	}
+
 
 }

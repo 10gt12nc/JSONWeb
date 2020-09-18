@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import net.sf.json.JSONArray;
 import tw.lin.bean.Msg;
 import tw.lin.dao.MsgDao;
@@ -21,20 +23,12 @@ public class New_MsgServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
 		String message = request.getParameter("msg");
 		MsgDao msgdao = Factory.getMsgFactory();
-		Msg fuckingMsg = new Msg();
-		fuckingMsg.setMessage(message);
-		msgdao.addMsg(fuckingMsg);
-		
-		//傳來JSON------------------------------------
-	
-		
-		//JSON轉 ------------------------------------
-		
-		
-		
+		Msg Msg = new Msg();
+		Msg.setMessage(message);
+		msgdao.addMsg(Msg);
+
 		// 重整有值
 		// request.getRequestDispatcher("index.jsp").forward(request, response);
 		response.sendRedirect("index.jsp");
